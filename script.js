@@ -2,9 +2,9 @@ let items = [];
 let sortDirection = [];
 let selectedItems = new Set();
 
-// function handleFileUpload(event) {
-//     const file = event.target.files[0];
-//     const reader = new FileReader();
+function handleFileUpload(event) {
+    const file = event.target.files[0];
+    const reader = new FileReader();
 
 async function handleFileUpload() {
     const fileId = '1wesZLRu8wsoPzKA16peVGawffq85X_v9'; // Replace with your file ID
@@ -17,16 +17,6 @@ async function handleFileUpload() {
     items = csvData.split('\n').map(row => row.split(','));
     sortDirection = new Array(items[0].length).fill(1);
     displayTable(items);
-}
-
-    reader.onload = function (e) {
-        const csvData = e.target.result;
-        items = csvData.split('\n').map(row => row.split(','));
-        sortDirection = new Array(items[0].length).fill(1);
-        displayTable(items);
-    };
-
-    reader.readAsText(file);
 }
 
 function displayTable(data) {
