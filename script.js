@@ -20,6 +20,8 @@ let selectedItems = new Set();
                     const newCell = newRow.insertCell();
                     newCell.textContent = cell;
                 });
+            });
+        }
 
 function displayTable(data) {
     const table = document.getElementById('csvTable');
