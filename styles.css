@@ -1,0 +1,100 @@
+body {
+    font-family: Arial, sans-serif;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid #ddd;
+}
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+.thumbnail {
+    max-width: 100px;
+    max-height: 100px;
+}
+.arrow {
+    user-select: none;
+    cursor: pointer;
+}
+.header {
+    position: sticky;
+    top: 0;
+    background-color: #f1f1f1;
+}
+.selected {
+    background-color: lightgreen;
+}
+.amber {
+    background-color: amber;
+}
+#clearSelectionButton {
+    background-color: lightblue;
+}
+
+#clearSelectionButton:enabled {
+    background-color: lightorange;
+}
+
+#clearSelectionButton:hover {
+    background-color: orange;
+}
+
+#clearSelectionButton:active {
+    background-color: darkorange;
+}
+
+#exportButton {
+    color: White;
+    background-color: lightblue;
+}
+
+#exportButton:enabled {
+    background-color: darkblue;
+}
+
+#exportButton:hover {
+    background-color: navy;
+}
+
+#exportButton:active {
+    background-color: midnightblue;
+}
+
+input[type=text], input[type=datetime-local] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 3px solid #ccc;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+}
+input[type=text]:focus, input[type=datetime-local]:focus {
+    border: 3px solid #555;
+}
+/* Add your existing styles here */
+
+/* Add styles for the gallery view */
+#csvGallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.gallery-item {
+    border: 1px solid #ddd;
+    margin: 8px;
+    padding: 8px;
+    text-align: center;
+    width: calc(50% - 16px); /* 2 cards per row, accounting for 8px margin on each side */
+    box-sizing: border-box;
+    background-color: #f9f9f9; /* Card background color */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); /* Card shadow */
+}
+.thumbnail {
+    width: 100%;
+    height: auto;
+}
