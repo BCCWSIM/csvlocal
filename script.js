@@ -10,7 +10,7 @@ async function handleFileUpload() {
     const fileId = '1wesZLRu8wsoPzKA16peVGawffq85X_v9'; // Replace with your file ID
     const response = await fetch(`https://www.googleapis.com/drive/v3/files/${fileId}?alt=media`, {
         headers: new Headers({
-            'Authorization': 'Bearer ' + 'YOUR_ACCESS_TOKEN' // Replace with your access token
+            'Authorization': 'Bearer ' + '1wesZLRu8wsoPzKA16peVGawffq85X_v9' // Replace with your access token
         })
     });
     const csvData = await response.text();
