@@ -2,19 +2,24 @@ let items = [];
 let sortDirection = [];
 let selectedItems = new Set();
 
-function handleFileUpload(event) {
-    const file = event.target.files[0];
-    const reader = new FileReader();
+        // Fetch the CSV file (assuming it's named 'Resources.csv')
+        fetch('Resources.csv')
+            .then(response => response.text())
+            .then(csvData => displayCSVData(csvData))
+            .catch(error => console.error('Error fetching CSV:', error));
 
-    reader.onload = function (e) {
-        const csvData = e.target.result;
-        items = csvData.split('\n').map(row => row.split(','));
-        sortDirection = new Array(items[0].length).fill(1);
-        displayTable(items);
-    };
+        function displayCSVData(csvData) {
+            const table = document.getElementById('csvTable');
+            table.innerHTML = ''; // Clear existing table content
 
-    reader.readAsText(file);
-}
+            const rows = csvData.split('\n');
+            rows.forEach(row => {
+                const cells = row.split(',');
+                const newRow = table.insertRow();
+                cells.forEach(cell => {
+                    const newCell = newRow.insertCell();
+                    newCell.textContent = cell;
+                });
 
 function displayTable(data) {
     const table = document.getElementById('csvTable');
