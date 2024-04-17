@@ -2,102 +2,15 @@ let items = [];
 let sortDirection = [];
 let selectedItems = new Set();
 
-        // Fetch the CSV file (assuming it's named 'Resources.csv')
-        fetch('Resources.csv')
-            .then(response => response.text())
-            .then(csvData => displayCSVData(csvData))
-            .catch(error => console.error('Error fetching CSV:', error));
-
-        function displayCSVData(csvData) {
-            const table = document.getElementById('csvTable');
-            table.innerHTML = ''; // Clear existing table content
-
-            const rows = csvData.split('\n');
-            rows.forEach(row => {
-                const cells = row.split(',');
-                const newRow = table.insertRow();
-                cells.forEach(cell => {
-                    const newCell = newRow.insertCell();
-                    newCell.textContent = cell;
-                });
-            });
-        }
-
-function displayTable(data) {
-    const table = document.getElementById('csvTable');
-    table.innerHTML = '';
-
-    const headerRow = document.createElement('tr');
-    headerRow.appendChild(document.createElement('th')); // Add an empty header for the checkbox column
-    data[0].forEach((cell, index) => {
-        const th = document.createElement('th');
-        th.classList.add('header');
-        const span = document.createElement('span');
-        span.textContent = cell;
-        th.appendChild(span);
-        const arrow = document.createElement('span');
-        arrow.textContent = ' ↑↓';
-        arrow.classList.add('arrow');
-        arrow.addEventListener('click', () => sortData(index));
-        th.appendChild(arrow);
-        headerRow.appendChild(th);
-    });
-    table.appendChild(headerRow);
-
-    for (let i = 1; i < data.length; i++) {
-        const dataRow = document.createElement('tr');
-        const checkbox = document.createElement('input');
-        checkbox.type = 'checkbox';
-        checkbox.classList.add('row-checkbox');
-        checkbox.checked = selectedItems.has(data[i].join(','));
-        checkbox.addEventListener('change', () => {
-            if (checkbox.checked) {
-                dataRow.classList.add('selected');
-                selectedItems.add(data[i].join(','));
-            } else {
-                dataRow.classList.remove('selected');
-                selectedItems.delete(data[i].join(','));
-            }
-            updateClearSelectionButton();
-        });
-        const checkboxCell = document.createElement('td');
-        checkboxCell.appendChild(checkbox);
-        dataRow.appendChild(checkboxCell);
-        data[i].forEach((cell, cellIndex) => {
-            const td = document.createElement('td');
-            if (cellIndex === 0) {
-                const img = document.createElement('img');
-                img.src = cell;
-                img.alt = 'Thumbnail';
-                img.classList.add('thumbnail');
-                td.appendChild(img);
-            } else {
-                td.textContent = cell;
-            }
-            dataRow.appendChild(td);
-        });
-        if (selectedItems.has(data[i].join(','))) {
-            dataRow.classList.add('selected');
-        }
-        table.appendChild(dataRow);
-    }
-}
-
-function sortData(columnIndex) {
-    const dataToSort = items.slice(1); // Exclude the header row from sorting
-    dataToSort.sort((a, b) => {
-        const aValue = isNaN(Date.parse(a[columnIndex])) ? a[columnIndex] : new Date(a[columnIndex]);
-        const bValue = isNaN(Date.parse(b[columnIndex])) ? b[columnIndex] : new Date(b[columnIndex]);
-        if (typeof aValue === 'string') {
-            return sortDirection[columnIndex] * aValue.localeCompare(bValue);
-        } else {
-            return sortDirection[columnIndex] * (aValue - bValue);
-        }
-    });
-    sortDirection[columnIndex] *= -1;
-    items = [items[0], ...dataToSort]; // Add the header row back after sorting
-    displayTable(items);
-}
+// Fetch the CSV file (assuming it's named 'Resources.csv')
+fetch('Resources.csv')
+    .then(response => response.text())
+    .then(csvData => {
+        items = csvData.split('\n').map(row => row.split(','));
+        sortDirection = new Array(items[0].length).fill(1);
+        displayTable(items);
+    })
+    .catch(error => console.error('Error fetching CSV:', error));
 
 function exportCSV() {
     const title = document.getElementById('titleInput').value;
