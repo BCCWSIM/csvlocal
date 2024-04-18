@@ -6,12 +6,13 @@ table {
     border-collapse: collapse;
     width: 100%;
     border: 1px solid #ddd;
-    text: 16px
 }
 th, td {
     border: 1px solid #ddd;
     padding: 8px;
     text-align: center;
+    color: #333;
+    font-size: 18px;
 }
 .arrow {
     user-select: none;
