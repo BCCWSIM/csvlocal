@@ -189,14 +189,49 @@ function displayTable(data) {
     }
 }
 
-// This is for the slider
-// document.getElementById('slider').addEventListener('input', function(e) {
-//   document.getElementById('csvTable').style.width = e.target.value + 'px';
-// });
-
 const exportButton = document.getElementById('exportButton');
 exportButton.addEventListener('click', exportCSV);
 
 const clearSelectionButton = document.getElementById('clearSelectionButton');
 clearSelectionButton.addEventListener('click', clearSelection);
 
+let isTableView = true;
+
+document.getElementById('toggleViewButton').addEventListener('click', toggleView);
+
+function toggleView() {
+    isTableView = !isTableView;
+    if (isTableView) {
+        document.getElementById('csvTable').style.display = '';
+        document.getElementById('csvGallery').style.display = 'none';
+        displayTable(items);
+    } else {
+        document.getElementById('csvTable').style.display = 'none';
+        document.getElementById('csvGallery').style.display = '';
+        displayGallery(items);
+    }
+}
+
+function displayGallery(data) {
+    const gallery = document.getElementById('csvGallery');
+    gallery.innerHTML = '';
+
+    for (let i = 1; i < data.length; i++) {
+        const div = document.createElement('div');
+        div.classList.add('card');
+        data[i].forEach((cell, cellIndex) => {
+            const p = document.createElement('p');
+            p.textContent = data[0][cellIndex] + ': ' + cell; // Display the header label and the cell data
+            if (cellIndex === 0) {
+                const img = document.createElement('img');
+                img.src = cell;
+                img.alt = 'Thumbnail';
+                img.classList.add('thumbnail');
+                div.appendChild(img);
+            } else {
+                div.appendChild(p);
+            }
+        });
+        gallery.appendChild(div);
+    }
+}
