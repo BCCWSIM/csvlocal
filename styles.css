@@ -1,5 +1,6 @@
 body {
     font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #ECE9E6, #eddcdc); 
 }
 table {
     border-collapse: collapse;
@@ -11,10 +12,6 @@ th, td {
     padding: 8px;
     text-align: center;
 }
-.thumbnail {
-    max-width: 100px;
-    max-height: 100px;
-}
 .arrow {
     user-select: none;
     cursor: pointer;
@@ -22,20 +19,18 @@ th, td {
 .header {
     position: sticky;
     top: 0;
-    background-color: #f1f1f1;
+    background-color: #625454;
 }
 .selected {
     background-color: lightgreen;
 }
-.amber {
-    background-color: amber;
-}
+
 #clearSelectionButton {
     background-color: lightblue;
 }
 
 #clearSelectionButton:enabled {
-    background-color: lightorange;
+    background-color: gold;
 }
 
 #clearSelectionButton:hover {
@@ -46,24 +41,8 @@ th, td {
     background-color: darkorange;
 }
 
-#exportButton {
-    color: White;
-    background-color: lightblue;
-}
-
-#exportButton:enabled {
-    background-color: darkblue;
-}
-
-#exportButton:hover {
-    background-color: navy;
-}
-
-#exportButton:active {
-    background-color: midnightblue;
-}
-
 input[type=text], input[type=datetime-local] {
+    max-width: 500px;
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -74,27 +53,37 @@ input[type=text], input[type=datetime-local] {
     outline: none;
 }
 input[type=text]:focus, input[type=datetime-local]:focus {
-    border: 3px solid #555;
+    border: 5px solid #555;
 }
-/* Add your existing styles here */
 
-/* Add styles for the gallery view */
-#csvGallery {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+label {
+    display: block;
+    margin-top: 20px;
 }
-.gallery-item {
-    border: 1px solid #ddd;
-    margin: 8px;
-    padding: 8px;
+button {
+    font-weight: bold; /* Bold text */
+    background-color: #add8e6; /* Pale blue background */
+    border: none;
+    color: black;
+    padding: 15px 32px; /* Larger size */
     text-align: center;
-    width: calc(50% - 16px); /* 2 cards per row, accounting for 8px margin on each side */
-    box-sizing: border-box;
-    background-color: #f9f9f9; /* Card background color */
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); /* Card shadow */
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 12px; /* Rounded corners */
 }
-.thumbnail {
-    width: 100%;
-    height: auto;
+
+button:hover {
+    background-color: #87ceeb; /* Highlight on hover */
 }
+
+button:active {
+    outline: none; /* No outline on click */
+    box-shadow: 0 0 0 2px #000; /* Outline effect using box-shadow */
+}
+table tr td:first-child input[type="checkbox"] {
+    display: none;
+}
+
