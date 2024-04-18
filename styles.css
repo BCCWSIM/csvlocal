@@ -124,6 +124,9 @@ img {
     justify-content: center; /* Add this line */
     align-items: center; /* Add this line */
 }
+.card > div > p {
+    text-align: center; /* Center the text */
+}
 
 .thumbnail {
     width: 100%;
