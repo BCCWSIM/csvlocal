@@ -12,7 +12,9 @@ th, td {
     padding: 8px;
     text-align: center;
     color: LightGray;
-    font-size: 25px;
+    font-size: 1vw; /* Adjust as needed */
+    min-font-size: 10px;
+    max-font-size: 20px;
 }
 .arrow {
     user-select: none;
