@@ -219,6 +219,17 @@ function displayGallery(data) {
     for (let i = 1; i < data.length; i++) {
         const div = document.createElement('div');
         div.classList.add('card');
+        // Add a click event listener to the card
+        div.addEventListener('click', function() {
+            const itemKey = data[i].join(',');
+            if (selectedItems.has(itemKey)) {
+                selectedItems.delete(itemKey);
+            } else {
+                selectedItems.add(itemKey);
+            }
+            updateClearSelectionButton();
+        });
+
         data[i].forEach((cell, cellIndex) => {
             const p = document.createElement('p');
             p.textContent = data[0][cellIndex] + ': ' + cell; // Display the header label and the cell data
