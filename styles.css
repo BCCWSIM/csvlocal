@@ -92,7 +92,7 @@ table tr td:first-child input[type="checkbox"] {
 }
 
 img {
-    width: 150px; /* or any desired width */
+    width: 200px; /* or any desired width */
     height: 100px; /* or any desired height */
     object-fit: cover; /* this makes the image cover the entire space of the defined width and height */
 }
