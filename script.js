@@ -189,6 +189,10 @@ function displayTable(data) {
     }
 }
 
+document.getElementById('slider').addEventListener('input', function(e) {
+  document.getElementById('csvTable').style.width = e.target.value + 'px';
+});
+
 const exportButton = document.getElementById('exportButton');
 exportButton.addEventListener('click', exportCSV);
 
