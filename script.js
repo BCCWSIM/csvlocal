@@ -219,13 +219,21 @@ function displayGallery(data) {
     for (let i = 1; i < data.length; i++) {
         const div = document.createElement('div');
         div.classList.add('card');
+
+        // Check if the item is selected
+        const itemKey = data[i].join(',');
+        if (selectedItems.has(itemKey)) {
+            div.classList.add('selected'); // Add the 'selected' class
+        }
+
         // Add a click event listener to the card
         div.addEventListener('click', function() {
-            const itemKey = data[i].join(',');
             if (selectedItems.has(itemKey)) {
                 selectedItems.delete(itemKey);
+                div.classList.remove('selected'); // Remove the 'selected' class
             } else {
                 selectedItems.add(itemKey);
+                div.classList.add('selected'); // Add the 'selected' class
             }
             updateClearSelectionButton();
         });
@@ -246,3 +254,4 @@ function displayGallery(data) {
         gallery.appendChild(div);
     }
 }
+
