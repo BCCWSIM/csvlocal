@@ -241,7 +241,21 @@ function displayGallery(data) {
         const contentDiv = document.createElement('div'); // Create a new div for the content
         data[i].forEach((cell, cellIndex) => {
             const p = document.createElement('p');
-            p.textContent = data[0][cellIndex] + ': ' + cell; // Display the header label and the cell data
+            const span = document.createElement('span');
+            span.style.fontWeight = 'bold'; // Make the header label bold
+
+            // Display the header label and the cell data based on the column
+            if (data[0][cellIndex] === 'Title') {
+                p.textContent = cell; // Display only the cell data
+            } else if (data[0][cellIndex] === 'SKU' || data[0][cellIndex] === 'ID') {
+                span.textContent = data[0][cellIndex] + ': '; // Display the header label
+                p.appendChild(span);
+                p.appendChild(document.createTextNode(cell)); // Display the cell data
+            } else if (data[0][cellIndex] === 'Quantity') {
+                p.textContent = cell; // Display only the cell data
+                p.style.fontSize = '1.5em'; // Format the cell data
+            }
+
             if (cellIndex === 0) {
                 const img = document.createElement('img');
                 img.src = cell;
@@ -256,5 +270,6 @@ function displayGallery(data) {
         gallery.appendChild(div);
     }
 }
+
 
 
