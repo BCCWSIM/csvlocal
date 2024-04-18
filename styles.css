@@ -12,7 +12,7 @@ th, td {
     padding: 8px;
     text-align: center;
     color: Black;
-    font-size: 1vw; /* Adjust as needed */
+    font-size: 2vw; /* Adjust as needed */
     min-font-size: 10px;
     max-font-size: 40px;
 }
