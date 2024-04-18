@@ -73,50 +73,15 @@ function displayTable(data) {
 }
 
 function sortData(columnIndex) {
-    const dataToSort = items.slice(1); // Exclude the header row from sorting
-    dataToSort.sort((a, b) => {
-        const aValue = isNaN(Date.parse(a[columnIndex])) ? a[columnIndex] : new Date(a[columnIndex]);
-        const bValue = isNaN(Date.parse(b[columnIndex])) ? b[columnIndex] : new Date(b[columnIndex]);
-        if (typeof aValue === 'string') {
-            return sortDirection[columnIndex] * aValue.localeCompare(bValue);
-        } else {
-            return sortDirection[columnIndex] * (aValue - bValue);
-        }
-    });
-    sortDirection[columnIndex] *= -1;
-    items = [items[0], ...dataToSort]; // Add the header row back after sorting
-    displayTable(items);
 }
 
 function exportCSV() {
-    const title = document.getElementById('titleInput').value;
-    const contactPerson = document.getElementById('contactPersonInput').value;
-    const startDateTime = document.getElementById('startDateTimeInput').value;
-    const endDateTime = document.getElementById('endDateTimeInput').value;
-    const selectedRows = Array.from(selectedItems).map(item => item.split(','));
-    const csvContent = 'data:text/csv;charset=utf-8,' + `Title,${title}\nContact Person,${contactPerson}\nStart Date & Time,${startDateTime}\nEnd Date & Time,${endDateTime}\nNumber of Items Selected,${selectedRows.length}\n` + [items[0], ...selectedRows].map(e => e.join(',')).join('\n');
-    const encodedUri = encodeURI(csvContent);
-    const link = document.createElement('a');
-    link.setAttribute('href', encodedUri);
-    link.setAttribute('download', 'export.csv');
-    document.body.appendChild(link); // Required for Firefox
-    link.click();
 }
 
 function clearSelection() {
-    selectedItems.clear();
-    displayTable(items);
-    updateClearSelectionButton();
 }
 
 function updateClearSelectionButton() {
-    const clearSelectionButton = document.getElementById('clearSelectionButton');
-    clearSelectionButton.textContent = `Clear Selection (${selectedItems.size})`;
-    if (selectedItems.size > 0) {
-        clearSelectionButton.classList.add('amber');
-    } else {
-        clearSelectionButton.classList.remove('amber');
-    }
 }
 
 const csvFileInput = document.getElementById('csvFileInput');
