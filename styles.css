@@ -119,11 +119,13 @@ img {
 }
 .card > div {
     padding: 10px;
-    display: flex; /* Add this line */
-    flex-direction: column; /* Add this line */
-    justify-content: center; /* Add this line */
-    align-items: center; /* Add this line */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center; /* Center the text */
 }
+
 .card > div > p {
     text-align: center; /* Center the text */
 }
