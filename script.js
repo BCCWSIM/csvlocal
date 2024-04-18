@@ -238,6 +238,7 @@ function displayGallery(data) {
             updateClearSelectionButton();
         });
 
+        const contentDiv = document.createElement('div'); // Create a new div for the content
         data[i].forEach((cell, cellIndex) => {
             const p = document.createElement('p');
             p.textContent = data[0][cellIndex] + ': ' + cell; // Display the header label and the cell data
@@ -246,12 +247,14 @@ function displayGallery(data) {
                 img.src = cell;
                 img.alt = 'Thumbnail';
                 img.classList.add('thumbnail');
-                div.appendChild(img);
+                contentDiv.appendChild(img);
             } else {
-                div.appendChild(p);
+                contentDiv.appendChild(p);
             }
         });
+        div.appendChild(contentDiv); // Append the content div to the card div
         gallery.appendChild(div);
     }
 }
+
 
