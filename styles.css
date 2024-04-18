@@ -86,4 +86,7 @@ button:active {
 table tr td:first-child input[type="checkbox"] {
     display: none;
 }
+img {
+    max-height: 25px;
+}
 
