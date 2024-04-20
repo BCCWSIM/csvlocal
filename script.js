@@ -110,7 +110,15 @@ function clearSelection() {
     selectedItems.clear();
     displayTable(items);
     updateClearSelectionButton();
+    updateGalleryView(); // Add this line
 }
+
+function updateGalleryView() {
+    if (!isTableView) {
+        displayGallery(items);
+    }
+}
+
 
 function updateClearSelectionButton() {
     const clearSelectionButton = document.getElementById('clearSelectionButton');
